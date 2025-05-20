@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bhutan Forestry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.29/"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Modern header with gradient background -->
+  <header class="map-header">
+    <div class="header-content">
+      <div class="logo-group">
+        <img src="images/logo1.png" alt="Department Logo" class="header-logo">
+        <img src="images/logo2.png" alt="Partner Logo" class="header-logo">
+      </div>
+      <div class="title-container">
+        <h1>Bhutan Forestry</h1>
+        <p class="header-description">An interactive geospatial platform visualizing Bhutan's protected forest network</p>
+      </div>
+      <div class="header-actions">
+        <button id="fullscreenBtn" class="action-btn" title="Toggle Fullscreen">
+          <i class="fas fa-expand"></i>
+        </button>
+        <!-- About Us Button -->
+        <button id="aboutUsBtn" class="action-btn" title="About Us">
+          <i class="fas fa-users"></i>
+        </button>
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="action-btn mobile-only" title="Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- About Us Modal -->
+    <div id="aboutUsModal" class="modal">
+      <div class="modal-content">
+        <span id="closeAboutUs" class="close">&times;</span>
+        <h2>About Us</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="images/team/member1.jpg" alt="Member 1">
+            <h4>Ayus Rai (05210054)</h4>
+            <p>Surveying and Geoinformatics Engineer.</p>
+          </div>
+          <div class="team-member">
+            <img src="images/team/member2.jpg" alt="Member 2">
+            <h4>Chimi Rigzin (05210055)</h4>
+            <p>Surveying and Geoinformatics Engineer.</p>
+          </div>
+          <div class="team-member">
+            <img src="images/team/member3.jpg" alt="Member 3">
+            <h4>Karma Tenzin Choda (05210057)</h4>
+            <p>Surveying and Geoinformatics Engineer.</p>
+          </div>
+          <div class="team-member">
+            <img src="images/team/member4.jpg" alt="Member 4">
+            <h4>Karma Tshering Dema (05210058)</h4>
+            <p>Surveying and Geoinformatics Engineer.</p>
+          </div>
+        </div>
+        <p style="margin-top:1em; text-align:center;">
+          We are a passionate team dedicated to Bhutan's conservation and sustainable forestry.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Layer List Sidebar with improved design -->
+    <div class="sidebar visible">
+      <div class="sidebar-header">
+        <h3><i class="fas fa-layer-group"></i> Map Layers</h3>
+        <button class="sidebar-toggle" id="layerListToggle">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+      <div id="layerListContainer"></div>
+    </div>
+    
+    <!-- Main Map View -->
+    <div id="viewDiv"></div>
+    
+    <!-- Enhanced Dashboard Panel -->
+    <div id="dashboard" class="dashboard hidden">
+      <div class="dashboard-header">
+        <h2><i class="fas fa-info-circle"></i> Feature Information</h2>
+        <button id="closeDashboard" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="featureInfo">
+        <div class="empty-state">
+          <i class="fas fa-mouse-pointer"></i>
+          <p>Click on any feature to view details</p>
+        </div>
+      </div>
+      <div id="statistics" class="stats-panel">
+        <h3><i class="fas fa-chart-bar"></i> Summary Statistics</h3>
+        <div class="stats-grid"></div>
+      </div>
+    </div>
+
+    <!-- Floating Sidebar Toggle Button -->
+    <button class="sidebar-toggle floating-toggle" id="floatingLayerListToggle">
+      <i class="fas fa-layer-group"></i>
+    </button>
+    
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav mobile-only">
+      <button class="mobile-nav-btn" id="mobileLayerBtn">
+        <i class="fas fa-layer-group"></i>
+        <span>Layers</span>
+      </button>
+      <button class="mobile-nav-btn" id="mobileInfoBtn">
+        <i class="fas fa-info-circle"></i>
+        <span>Info</span>
+      </button>
+      <button class="mobile-nav-btn" id="mobileSearchBtn">
+        <i class="fas fa-search"></i>
+        <span>Search</span>
+      </button>
+      <button class="mobile-nav-btn" id="mobileLocationBtn">
+        <i class="fas fa-location-arrow"></i>
+        <span>Location</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p>Loading Map...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
